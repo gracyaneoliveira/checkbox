@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Calendar</title>
+		
+		<h:outputStylesheet>
+			body {
+				 font-size:14px;	
+			}
+			
+			h3{
+				margin:0;
+				padding: 5px 0 5px 0;
+				font-family: Arial;
+				color: #8f8f8f;
+			}
+		</h:outputStylesheet>
+		
+	</h:head>
+		
+	<h:body>
+		<div style="background-color:#ddd;padding: 0 0 0 14px;">
+			<h3>CALENDAR</h3>
+		</div>
+		<p:spacer height="1px;"/>
+			<h:form id="frm">
+				<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
+				<p:panelGrid columns="1">
+					<h:panelGroup>
+					    <p:outputLabel for="ini" value="Inicio data:" />
+		       		    <p:calendar id="timeIni" value="#{calendarViewBean.inicioHora}" binding="#{inicioHora}" 
+		       		    			inputStyle="width:40px;float:right;" pattern="HH:mm" timeOnly="true"  />
+		        		<p:spacer width="12px;"/>
+		        		<p:calendar id="ini" value="#{calendarViewBean.inicioDate}" inputStyle="width:80px;float:right;"
+		        					pattern="dd/MM/yyyy" mask="true" binding="#{firstDate}">
+		        			 <f:convertDateTime pattern="dd/MM/yyyy" />
+		        		</p:calendar>
+	       		    </h:panelGroup>
+	        		
+	        		<h:panelGroup>
+		        		<p:outputLabel for="fim" value="Fim data:" />
+					    <p:calendar id="timeFim" value="#{calendarViewBean.fimHora}" binding="#{fimHora}"
+					    			inputStyle="width:40px; float:right;" pattern="HH:mm" timeOnly="true"  />
+		        		<p:spacer width="12px;"/>
+		        		<p:calendar id="fim" value="#{calendarViewBean.fimDate}" inputStyle="width:80px;float:right;" 
+		        					pattern="dd/MM/yyyy" mask="true" 
+		        					validator="dateValidator">
+		        			<f:attribute name="firstDate" value="#{firstDate}" />
+		        			<f:attribute name="inicioHora" value="#{inicioHora}" />
+		        			<f:attribute name="fimHora" value="#{fimHora}" />
+		        			<f:convertDateTime pattern="dd/MM/yyyy" />
+		        		</p:calendar>
+					</h:panelGroup>
+					<h:panelGroup>
+						<p:outputLabel for="datetime" value="Resultado:" />
+        				<p:calendar id="datetime" value="#{calendarViewBean.result}" 
+        							inputStyle="width:130px;float:right;"
+        							pattern="dd/MM/yyyy HH:mm:ss" />
+					</h:panelGroup>
+					<p:commandButton action="#{calendarViewBean.save}" value="Salvar" update="frm"/>
+				</p:panelGrid>
+			</h:form>
+	</h:body>
+</html>

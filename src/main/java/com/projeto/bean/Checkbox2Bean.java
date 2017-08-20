@@ -8,7 +8,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ValueChangeEvent;
 
 import org.primefaces.context.RequestContext;
 
@@ -16,7 +15,7 @@ import com.projeto.model.City;
 
 @ManagedBean
 @ViewScoped
-public class CheckboxBean {
+public class Checkbox2Bean {
 
 	private List<City> selectedCities;
 	private List<City> cities;
@@ -41,34 +40,11 @@ public class CheckboxBean {
 		selectedCities.add(cities.get(2));
 		selectedCities.add(cities.get(3));
 		selectedCities.add(cities.get(4));
-		selectedCities.add(cities.get(5));
-		selectedCities.add(cities.get(6));
+//		selectedCities.add(cities.get(5));
+//		selectedCities.add(cities.get(6));
 		
-		populateLabel();
 	}
 	
-	public void populateLabel() {
-	    /* Populating the label with the selected options */
-	    cityLabel = new String("");
-	    if (selectedCities.size() > 0) {
-	        for (int i = 0; i < selectedCities.size(); i++) {
-	            if (cityLabel.length() == 0) {
-	                cityLabel = selectedCities.get(i).getNome();
-	            } else {
-	            	cityLabel = cityLabel + ", " + selectedCities.get(i).getNome();
-	            }
-	        }
-	    }
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public void save() {
 		System.out.println("# Salvo : " + name);
 
@@ -87,6 +63,14 @@ public class CheckboxBean {
 	public void newEntity() {
 		name = "";
 		selectedCities.clear();
+	}
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public List<City> getSelectedCities() {

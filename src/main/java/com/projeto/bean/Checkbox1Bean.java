@@ -15,7 +15,7 @@ import com.projeto.model.City;
 
 @ManagedBean
 @ViewScoped
-public class CheckboxViewBean {
+public class Checkbox1Bean {
 
 	private List<City> selectedCities;
 	private List<City> cities;
@@ -33,8 +33,8 @@ public class CheckboxViewBean {
 		cities.add(new City("Berlin", 5L));
 		cities.add(new City("Barcelona", 6L));
 		cities.add(new City("Rome rome", 7L));
-//		cities.add(new City("Brasilia", 8L));
-//		cities.add(new City("Amsterdam", 9L));
+		cities.add(new City("Brasilia", 8L));
+		cities.add(new City("Amsterdam", 9L));
 		
 		selectedCities.add(cities.get(0));
 		selectedCities.add(cities.get(1));
@@ -45,10 +45,6 @@ public class CheckboxViewBean {
 		selectedCities.add(cities.get(6));
 //		selectedCities.add(cities.get(7));
 //		selectedCities.add(cities.get(8));
-	}
-	
-	public void teste(){
-		System.out.println("meu teste");
 	}
 	
 	public String getName() {

@@ -32,31 +32,31 @@
 		
 	<h:body>
 		<div style="background-color:#ddd;padding: 0 0 0 14px;">
-			<h3>CHECK-BOX-MENU - 2</h3>
+			<h3>CHECK-BOX-MENU - 3</h3>
 		</div>
 		<p:spacer height="1px;"/>
 			<h:form id="frm">
 				<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
 			    <p:panelGrid id="grid" columns="2" cellpadding="5">
 			    	<p:outputLabel for="nome" value="Nome:" />
-			    	<p:inputText id="nome" value="#{checkboxBean.name}" required="true"/>
+			    	<p:inputText id="nome" value="#{checkbox3Bean.name}" required="true"/>
 			    	
 			        <p:outputLabel value="City:"/>
 			        <p:selectCheckboxMenu id="menu" 
 		                              	widgetVar="wvCheckBoxMenu"
-		        						value="#{checkboxBean.selectedCities}" 
-	       								label="#{not empty checkboxBean.cityLabel?checkboxBean.cityLabel:'ALL'}"
+		        						value="#{checkbox3Bean.selectedCities}" 
+	       								label="#{not empty checkbox3Bean.cityLabel?checkbox3Bean.cityLabel:'ALL'}"
 	                            		filter="true" 
 	                            		filterMatchMode="startsWith" 
 		                              	style="width: 193px;" 
 		                              	converter="cityConverter">
-			            <f:selectItems value="#{checkboxBean.cities}" var="citie"  
+			            <f:selectItems value="#{checkbox3Bean.cities}" var="citie"  
 			            				itemLabel="#{citie.nome}" itemValue="#{citie}"/>
-           				<p:ajax event="toggleSelect" oncomplete="PF('wvCheckBoxMenu').show()" listener="#{checkboxBean.populateLabel}" update="menu" ignoreAutoUpdate="true"/>
-          				<p:ajax oncomplete="PF('wvCheckBoxMenu').show()" listener="#{checkboxBean.populateLabel}" update="menu" ignoreAutoUpdate="true"/>
+           				<p:ajax event="toggleSelect" oncomplete="PF('wvCheckBoxMenu').show()" listener="#{checkbox3Bean.populateLabel}" update="menu" ignoreAutoUpdate="true"/>
+          				<p:ajax oncomplete="PF('wvCheckBoxMenu').show()" listener="#{checkbox3Bean.populateLabel}" update="menu" ignoreAutoUpdate="true"/>
 			        </p:selectCheckboxMenu>
 					<p:outputLabel/>
-			    	<p:commandButton value="Salvar" action ="#{checkboxBean.save()}" update="messages frm"/> 
+			    	<p:commandButton value="Salvar" action ="#{checkbox3Bean.save()}" update="messages frm"/> 
 			    </p:panelGrid>
 			</h:form>
 	</h:body>

@@ -26,32 +26,32 @@
 		
 	<h:body>
 		<div style="background-color:#ddd;padding: 0 0 0 14px;">
-			<h3>CHECK-BOX-MENU</h3>
+			<h3>CHECK-BOX-MENU - 1</h3>
 		</div>
 		<p:spacer height="1px;"/>
 			<h:form id="frm">
 				<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
 			    <p:panelGrid id="grid" columns="2" cellpadding="5">
 			    	<p:outputLabel for="nome" value="Nome:" />
-			    	<p:inputText id="nome" value="#{checkboxViewBean.name}" required="true"/>
+			    	<p:inputText id="nome" value="#{checkbox1Bean.name}" required="true"/>
 			    	
 			        <p:outputLabel value="City:"/>
 			        <p:selectCheckboxMenu id="menu" 
 		                              	widgetVar="wvCheckBox"
-		        						value="#{checkboxViewBean.selectedCities}" 
+		        						value="#{checkbox1Bean.selectedCities}" 
 	       								label="ALL"
 		                              	updateLabel="true" 
 	                            		filter="true" 
 	                            		filterMatchMode="startsWith" 
 		                              	style="width: 193px; white-space: nowrap;" 
-		                              	converter="cityConverter" onchange="console.log('mudou...')">
-		                <p:ajax event="toggleSelect" onstart="console.log('tesfdd...')" update="menu" ignoreAutoUpdate="true" oncomplete="PF('wvCheckBox').show()" listener="#{checkboxViewBean.teste}" process="@this"/>
+		                              	converter="cityConverter">
+		                <p:ajax event="toggleSelect" update="menu" ignoreAutoUpdate="true" oncomplete="PF('wvCheckBox').show()" process="@this"/>
 			            <p:ajax event="change" update="menu" oncomplete="PF('wvCheckBox').show()" ignoreAutoUpdate="true"/>
-			            <f:selectItems value="#{checkboxViewBean.cities}" var="citie"  
+			            <f:selectItems value="#{checkbox1Bean.cities}" var="citie"  
 			            				itemLabel=" #{citie.nome}" itemValue="#{citie}"/>
 			        </p:selectCheckboxMenu>
 					<p:outputLabel/>
-			    	<p:commandButton value="Salvar" action ="#{checkboxViewBean.save()}" update="messages frm"/> 
+			    	<p:commandButton value="Salvar" action ="#{checkbox1Bean.save()}" update="messages frm"/> 
 			    </p:panelGrid>
 			</h:form>
 	</h:body>

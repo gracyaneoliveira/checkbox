@@ -8,6 +8,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ValueChangeEvent;
 
 import org.primefaces.context.RequestContext;
 
@@ -15,11 +16,12 @@ import com.projeto.model.City;
 
 @ManagedBean
 @ViewScoped
-public class CheckboxViewBean {
+public class CheckboxBean {
 
 	private List<City> selectedCities;
 	private List<City> cities;
 	private String name;
+	private String cityLabel;
 
 	@PostConstruct
 	public void init() {
@@ -33,8 +35,6 @@ public class CheckboxViewBean {
 		cities.add(new City("Berlin", 5L));
 		cities.add(new City("Barcelona", 6L));
 		cities.add(new City("Rome rome", 7L));
-//		cities.add(new City("Brasilia", 8L));
-//		cities.add(new City("Amsterdam", 9L));
 		
 		selectedCities.add(cities.get(0));
 		selectedCities.add(cities.get(1));
@@ -43,14 +43,24 @@ public class CheckboxViewBean {
 		selectedCities.add(cities.get(4));
 		selectedCities.add(cities.get(5));
 		selectedCities.add(cities.get(6));
-//		selectedCities.add(cities.get(7));
-//		selectedCities.add(cities.get(8));
+		
+		populateLabel();
 	}
 	
-	public void teste(){
-		System.out.println("meu teste");
+	public void populateLabel() {
+	    /* Populating the label with the selected options */
+	    cityLabel = new String("");
+	    if (selectedCities.size() > 0) {
+	        for (int i = 0; i < selectedCities.size(); i++) {
+	            if (cityLabel.length() == 0) {
+	                cityLabel = selectedCities.get(i).getNome();
+	            } else {
+	            	cityLabel = cityLabel + ", " + selectedCities.get(i).getNome();
+	            }
+	        }
+	    }
 	}
-	
+
 	public String getName() {
 		return name;
 	}
@@ -93,5 +103,13 @@ public class CheckboxViewBean {
 
 	public void setCities(List<City> cities) {
 		this.cities = cities;
+	}
+	
+	public String getCityLabel() {
+		return cityLabel;
+	}
+
+	public void setCityLabel(String cityLabel) {
+		this.cityLabel = cityLabel;
 	}
 }
